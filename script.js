@@ -109,25 +109,29 @@ function enterGame() {
     document.querySelector('.game-container').style.display = 'block';
 }
 
-// Adjust canvas size dynamically on window resize for responsive design
+// Adjust canvas layout dynamically for responsive design on smaller screens
 function adjustCanvasLayout() {
     const baseContainer = document.querySelector('.base-container');
     const controlsContainer = document.querySelector('.controls');
 
-    // Set baseContainer to occupy full viewport dimensions
-    baseContainer.style.width = '100vw';
-    baseContainer.style.height = '100vh';
-    baseContainer.style.flexDirection = 'column';
+    const screenWidth = window.innerWidth;
 
-    // Ensure controls stay below the canvas
-    controlsContainer.style.marginTop = '20px';
+    // Check for smaller screens and adjust sizes accordingly
+    if (screenWidth <= 100) {
+        baseContainer.style.width = '90vw';
+        baseContainer.style.height = 'auto';
+        controlsContainer.style.flexDirection = 'column'; // Stack controls vertically
+    } else {
+        baseContainer.style.width = '500px';
+        baseContainer.style.height = '400px';
+        controlsContainer.style.marginTop = '20px';
+    }
 }
 
-// Initial adjustment on page load
+// Apply layout adjustment on load and resize
 window.onload = () => {
     loadItemsInBatches();
-    adjustCanvasLayout(); // Apply layout adjustment on load
+    adjustCanvasLayout();
 };
 
-// Apply layout adjustment on resize
 window.addEventListener('resize', adjustCanvasLayout);

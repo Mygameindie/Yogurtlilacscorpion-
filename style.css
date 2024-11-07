@@ -70,12 +70,12 @@ body {
 
 /* Controls section */
 .controls {
-    margin-top:20px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column; /* Stack each category on a new line */
     justify-content: center;
     align-items: center;
-    width: auto;
+    width: 100%;
     flex-wrap: wrap;
 }
 
@@ -110,7 +110,7 @@ body {
 .skirt { z-index: 9; }
 .top { z-index: 10; }
 .dress { z-index: 11; }
-.jacket { z-index: 12;}
+.jacket { z-index: 12; }
 .accessories { z-index: 13; }
 .hat { z-index: 14; }
 
@@ -128,37 +128,38 @@ body {
     border-color: #6200ea;
 }
 
-/* Responsive adjustments for .base-container on mobile, tablet, and desktop screens */
-@media (max-width: 600px) {
+/* Responsive styling for smaller screens */
+@media (max-width: 100px) {
     .base-container {
-        width: 90vw;
-        height: auto; /* Allow height to adjust dynamically based on width */
+        width: auto; /* Make base container responsive */
+        height: auto;
     }
+
+    .base-container img {
+        width: auto; /* Scale images to fit smaller screens */
+        height: auto;
+    }
+
+    .controls img {
+        width: auto; /* Resize control buttons */
+        height: auto;
+    }
+
     .main-menu img {
-        width: 180vw; /* Scale main menu image down for mobile */
+        width: auto; /* Adjust main menu images */
+        height: auto;
     }
+
     .main-menu button {
-        font-size: 16px; /* Adjust button size for smaller screens */
-        width: 180vw; /* Ensure buttons fit on smaller screens */
+        width: auto; /* Scale buttons for smaller screens */
+        font-size: 16px; /* Reduce font size */
     }
-}
 
-@media (min-width: 600px) and (max-width: 1024px) {
-    .base-container {
-        width: 70vw;
-        height: auto;
+    .controls {
+        flex-direction: column; /* Stack controls vertically */
     }
-}
 
-@media (min-width: 1024px) {
-    .base-container {
-        width: 50vw;
-        max-width: 500px;
-        height: auto;
+    .category-group {
+        margin-bottom: auto; /* Reduce space between categories */
     }
-}
-
-/* Additional margin to prevent overlap with controls */
-.base-container {
-    margin-bottom: 500px;
 }
